@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+
 import 'package:flutter_study/providers/theme_provider.dart';
+import 'package:flutter_study/data/widget_data.dart';
 
 void main() {
   runApp(
@@ -31,6 +34,15 @@ class WidgetExplorerApp extends StatelessWidget {
             useMaterial3: true,
           ),
           themeMode: themeProvider.themeMode,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ja', ''), // Japanese
+            Locale('en', ''), // English
+          ],
           home: const AppShell(),
         );
       },
@@ -70,15 +82,15 @@ class _AppShellState extends State<AppShell> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.widgets),
-            label: 'Widgets',
+            label: 'ウィジェット',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: 'Favorites',
+            label: 'お気に入り',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: '設定',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -88,7 +100,7 @@ class _AppShellState extends State<AppShell> {
   }
 }
 
-// --- Placeholder Screens ---
+// --- Screens ---
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -107,8 +119,22 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text('Home Screen: Widget List will be here.'),
+      body: ListView.builder(
+        itemCount: widgetList.length,
+        itemBuilder: (context, index) {
+          final item = widgetList[index];
+          return Card(
+            margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+            child: ListTile(
+              leading: Icon(item.icon, color: Theme.of(context).primaryColor),
+              title: Text(item.name),
+              subtitle: Text(item.description, maxLines: 2, overflow: TextOverflow.ellipsis),
+              onTap: () {
+                // TODO: Navigate to Widget Detail Screen
+              },
+            ),
+          );
+        },
       ),
     );
   }
@@ -121,10 +147,10 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorites'),
+        title: const Text('お気に入り'),
       ),
       body: const Center(
-        child: Text('Favorites Screen: Favorited widgets will be here.'),
+        child: Text('お気に入りに追加したWidgetがここに表示されます。'),
       ),
     );
   }
@@ -137,14 +163,14 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: const Text('設定'),
       ),
       body: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
           return ListView(
             children: [
               ListTile(
-                title: const Text('Dark Mode'),
+                title: const Text('ダークモード'),
                 trailing: Switch(
                   value: themeProvider.themeMode == ThemeMode.dark,
                   onChanged: (value) {
@@ -154,7 +180,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: const Text('System Default'),
+                title: const Text('システム設定に従う'),
                 trailing: Radio<ThemeMode>(
                   value: ThemeMode.system,
                   groupValue: themeProvider.themeMode,
@@ -166,7 +192,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: const Text('Light'),
+                title: const Text('ライト'),
                 trailing: Radio<ThemeMode>(
                   value: ThemeMode.light,
                   groupValue: themeProvider.themeMode,
@@ -178,7 +204,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: const Text('Dark'),
+                title: const Text('ダーク'),
                 trailing: Radio<ThemeMode>(
                   value: ThemeMode.dark,
                   groupValue: themeProvider.themeMode,
