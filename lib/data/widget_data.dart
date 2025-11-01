@@ -1,69 +1,188 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/models/widget_item.dart';
+import '../models/widget_item.dart';
 
-// アプリで学習対象とするWidgetのサンプルデータリスト
-final List<WidgetItem> widgetList = [
-  const WidgetItem(
+final List<WidgetItem> widgetData = [
+  WidgetItem(
     name: 'Container',
-    category: WidgetCategory.layout,
-    icon: Icons.check_box_outline_blank,
     description: '描画、配置、サイズ調整を組み合わせた便利なウィジェットです。',
-    documentationUrl: 'https://api.flutter.dev/flutter/widgets/Container-class.html',
+    category: 'レイアウト',
+    icon: Icons.check_box_outline_blank,
+    codeSnippet: '''
+Container(
+  width: 100,
+  height: 100,
+  color: Colors.blue,
+  child: const Center(child: Text('Container')),
+)
+''',
   ),
-  const WidgetItem(
-    name: 'Column',
-    category: WidgetCategory.layout,
-    icon: Icons.view_column,
-    description: '子ウィジェットを縦方向に並べて表示します。',
-    documentationUrl: 'https://api.flutter.dev/flutter/widgets/Column-class.html',
-  ),
-  const WidgetItem(
-    name: 'Row',
-    category: WidgetCategory.layout,
-    icon: Icons.view_week_outlined,
-    description: '子ウィジェットを横方向に並べて表示します。',
-    documentationUrl: 'https://api.flutter.dev/flutter/widgets/Row-class.html',
-  ),
-  const WidgetItem(
+  WidgetItem(
     name: 'Text',
-    category: WidgetCategory.text,
+    description: '単一のスタイルを持つテキストを表示します。',
+    category: '基本',
     icon: Icons.text_fields,
-    description: '単一スタイルのテキストを表示します。',
-    documentationUrl: 'https://api.flutter.dev/flutter/widgets/Text-class.html',
+    codeSnippet: '''
+const Text(
+  'Hello, World!',
+  style: TextStyle(fontSize: 24),
+)
+''',
   ),
-  const WidgetItem(
-    name: 'Icon',
-    category: WidgetCategory.assets,
-    icon: Icons.insert_emoticon,
-    description: 'アイコンフォントからグラフィカルなアイコンを表示します。',
-    documentationUrl: 'https://api.flutter.dev/flutter/widgets/Icon-class.html',
+  WidgetItem(
+    name: 'Column',
+    description: '子ウィジェットを垂直方向に並べて表示します。',
+    category: 'レイアウト',
+    icon: Icons.view_column,
+    codeSnippet: '''
+const Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text('Child 1'),
+    Text('Child 2'),
+  ],
+)
+''',
   ),
-  const WidgetItem(
-    name: 'Image',
-    category: WidgetCategory.assets,
-    icon: Icons.image,
-    description: '画像を表示するためのウィジェットです。',
-    documentationUrl: 'https://api.flutter.dev/flutter/widgets/Image-class.html',
+  WidgetItem(
+    name: 'Row',
+    description: '子ウィジェットを水平方向に並べて表示します。',
+    category: 'レイアウト',
+    icon: Icons.view_agenda_outlined,
+    codeSnippet: '''
+const Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text('Child 1'),
+    SizedBox(width: 16),
+    Text('Child 2'),
+  ],
+)
+''',
   ),
-   const WidgetItem(
-    name: 'Scaffold',
-    category: WidgetCategory.layout,
-    icon: Icons.web_asset,
-    description: '基本的なマテリアルデザインの視覚レイアウト構造を実装します。',
-    documentationUrl: 'https://api.flutter.dev/flutter/material/Scaffold-class.html',
+  WidgetItem(
+    name: 'Stack',
+    description: '子ウィジェットを重ねて表示します。',
+    category: 'レイアウト',
+    icon: Icons.layers,
+    codeSnippet: '''
+Stack(
+  children: <Widget>[
+    Container(
+      width: 100,
+      height: 100,
+      color: Colors.red,
+    ),
+    Container(
+      width: 90,
+      height: 90,
+      color: Colors.green,
+    ),
+    Container(
+      width: 80,
+      height: 80,
+      color: Colors.blue,
+    ),
+  ],
+)
+''',
   ),
-  const WidgetItem(
-    name: 'AppBar',
-    category: WidgetCategory.layout,
-    icon: Icons.web_asset_off,
-    description: 'マテリアルデザインのアプリバーです。',
-    documentationUrl: 'https://api.flutter.dev/flutter/material/AppBar-class.html',
-  ),
-  const WidgetItem(
+  WidgetItem(
     name: 'ListView',
-    category: WidgetCategory.scrolling,
+    description: 'スクロール可能なリストを表示します。',
+    category: 'レイアウト',
     icon: Icons.list,
-    description: 'ウィジェットを直線的に配置するスクロール可能なリストです。',
-    documentationUrl: 'https://api.flutter.dev/flutter/widgets/ListView-class.html',
+    codeSnippet: '''
+ListView(
+  children: const <Widget>[
+    ListTile(
+      leading: Icon(Icons.map),
+      title: Text('Map'),
+    ),
+    ListTile(
+      leading: Icon(Icons.photo_album),
+      title: Text('Album'),
+    ),
+    ListTile(
+      leading: Icon(Icons.phone),
+      title: Text('Phone'),
+    ),
+  ],
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Image',
+    description: '画像を表示します。',
+    category: '基本',
+    icon: Icons.image,
+    codeSnippet: '''
+Image.network(
+  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Icon',
+    description: 'アイコンを表示します。',
+    category: '基本',
+    icon: Icons.insert_emoticon,
+    codeSnippet: '''
+const Icon(
+  Icons.favorite,
+  color: Colors.pink,
+  size: 24.0,
+  semanticLabel: 'Text to announce in accessibility modes',
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Card',
+    description: '角が丸く、影が付いたマテリアルデザインのカードです。',
+    category: 'レイアウト',
+    icon: Icons.card_giftcard,
+    codeSnippet: '''
+Card(
+  child: const SizedBox(
+    width: 200,
+    height: 100,
+    child: Center(child: Text('Card')),
+  ),
+)
+''',
+  ),
+  WidgetItem(
+    name: 'ElevatedButton',
+    description: '影が付いたマテリアルデザインのボタンです。',
+    category: '入力',
+    icon: Icons.smart_button,
+    codeSnippet: '''
+ElevatedButton(
+  onPressed: () {},
+  child: const Text('ElevatedButton'),
+)
+''',
+  ),
+  WidgetItem(
+    name: 'TextField',
+    description: 'テキスト入力フィールドです。',
+    category: '入力',
+    icon: Icons.edit,
+    codeSnippet: '''
+const TextField(
+  decoration: InputDecoration(
+    border: OutlineInputBorder(),
+    labelText: 'TextField',
+  ),
+)
+''',
+  ),
+  WidgetItem(
+    name: 'CircularProgressIndicator',
+    description: '円形プログレスインジケーターです。',
+    category: '表示',
+    icon: Icons.refresh,
+    codeSnippet: '''
+const CircularProgressIndicator()
+''',
   ),
 ];
