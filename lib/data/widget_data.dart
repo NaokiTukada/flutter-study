@@ -185,4 +185,127 @@ const TextField(
 const CircularProgressIndicator()
 ''',
   ),
+  WidgetItem(
+    name: 'Slider',
+    description: 'スライダーで値を選択します。',
+    category: '入力',
+    icon: Icons.linear_scale,
+    codeSnippet: '''
+Slider(
+  value: _currentSliderValue,
+  max: 100,
+  divisions: 5,
+  label: _currentSliderValue.round().toString(),
+  onChanged: (double value) {
+    setState(() {
+      _currentSliderValue = value;
+    });
+  },
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Switch',
+    description: 'オン/オフを切り替えるスイッチです。',
+    category: '入力',
+    icon: Icons.switch_camera,
+    codeSnippet: '''
+Switch(
+  value: _isSwitched,
+  onChanged: (value) {
+    setState(() {
+      _isSwitched = value;
+    });
+  },
+)
+''',
+  ),
+  WidgetItem(
+    name: 'SnackBar',
+    description: '画面下部に一時的なメッセージを表示します。',
+    category: '表示',
+    icon: Icons.message,
+    codeSnippet: '''
+ElevatedButton(
+  child: const Text('Show SnackBar'),
+  onPressed: () {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('This is a SnackBar!'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {},
+        ),
+      ),
+    );
+  },
+)
+''',
+  ),
+  WidgetItem(
+    name: 'AlertDialog',
+    description: 'ユーザーに通知や確認を求めるダイアログです。',
+    category: '表示',
+    icon: Icons.add_alert,
+    codeSnippet: '''
+ElevatedButton(
+  child: const Text('Show Dialog'),
+  onPressed: () {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('AlertDialog Title'),
+          content: const Text('This is the content of the alert dialog.'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  },
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Wrap',
+    description: '子ウィジェットを折り返して表示します。',
+    category: 'レイアウト',
+    icon: Icons.wrap_text,
+    codeSnippet: '''
+Wrap(
+  spacing: 8.0, // gap between adjacent chips
+  runSpacing: 4.0, // gap between lines
+  children: <Widget>[
+    Chip(label: Text('Hamilton')),
+    Chip(label: Text('Lafayette')),
+    Chip(label: Text('Mulligan')),
+    Chip(label: Text('Laurens')),
+    Chip(label: Text('Burr')),
+    Chip(label: Text('Washington')),
+  ],
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Checkbox',
+    description: 'チェックボックスで項目を選択します。',
+    category: '入力',
+    icon: Icons.check_box,
+    codeSnippet: '''
+Checkbox(
+  value: _isChecked,
+  onChanged: (bool? value) {
+    setState(() {
+      _isChecked = value!;
+    });
+  },
+)
+''',
+  ),
 ];

@@ -15,6 +15,12 @@ import 'package:flutter_study/widgets/examples/row_example.dart';
 import 'package:flutter_study/widgets/examples/stack_example.dart';
 import 'package:flutter_study/widgets/examples/text_example.dart';
 import 'package:flutter_study/widgets/examples/text_field_example.dart';
+import 'package:flutter_study/widgets/examples/slider_example.dart';
+import 'package:flutter_study/widgets/examples/switch_example.dart';
+import 'package:flutter_study/widgets/examples/snackbar_example.dart';
+import 'package:flutter_study/widgets/examples/alert_dialog_example.dart';
+import 'package:flutter_study/widgets/examples/wrap_example.dart';
+import 'package:flutter_study/widgets/examples/checkbox_example.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_study/providers/favorites_provider.dart';
@@ -193,6 +199,18 @@ class DetailScreen extends StatelessWidget {
         return const TextFieldExample();
       case 'CircularProgressIndicator':
         return const CircularProgressIndicatorExample();
+      case 'Slider':
+        return const SliderExample();
+      case 'Switch':
+        return const SwitchExample();
+      case 'SnackBar':
+        return const SnackBarExample();
+      case 'AlertDialog':
+        return const AlertDialogExample();
+      case 'Wrap':
+        return const WrapExample();
+      case 'Checkbox':
+        return const CheckboxExample();
       default:
         return const SizedBox();
     }
