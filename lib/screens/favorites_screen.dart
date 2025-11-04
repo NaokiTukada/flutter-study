@@ -47,11 +47,21 @@ class FavoritesScreen extends StatelessWidget {
                   );
                 }
 
-                return StaggeredGrid.count(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16.0,
-                  crossAxisSpacing: 16.0,
-                  children: favoriteWidgets.map((item) => StaggeredGridTile.fit(crossAxisCellCount: 1, child: WidgetCard(key: ValueKey(item.name), item: item))).toList(),
+                return LayoutBuilder(
+                  builder: (context, constraints) {
+                    final crossAxisCount = (constraints.maxWidth / 200).floor().clamp(2, 6);
+                    return StaggeredGrid.count(
+                      crossAxisCount: crossAxisCount,
+                      mainAxisSpacing: 16.0,
+                      crossAxisSpacing: 16.0,
+                      children: favoriteWidgets
+                          .map((item) => StaggeredGridTile.fit(
+                                crossAxisCellCount: 1,
+                                child: WidgetCard(key: ValueKey(item.name), item: item),
+                              ))
+                          .toList(),
+                    );
+                  },
                 );
               },
             ),

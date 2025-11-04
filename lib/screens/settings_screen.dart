@@ -13,31 +13,36 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('設定'),
       ),
-      body: ListView(
-        children: [
-          _buildSectionTitle(context, 'テーマ'),
-          SwitchListTile(
-            title: const Text('ダークモード'),
-            value: themeProvider.themeMode == ThemeMode.dark,
-            onChanged: (value) {
-              themeProvider.setThemeMode(value ? ThemeMode.dark : ThemeMode.light);
-            },
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 800),
+          child: ListView(
+            children: [
+              _buildSectionTitle(context, 'テーマ'),
+              SwitchListTile(
+                title: const Text('ダークモード'),
+                value: themeProvider.themeMode == ThemeMode.dark,
+                onChanged: (value) {
+                  themeProvider.setThemeMode(value ? ThemeMode.dark : ThemeMode.light);
+                },
+              ),
+              const Divider(),
+              _buildSectionTitle(context, 'バージョン情報'),
+              const ListTile(
+                title: Text('バージョン'),
+                subtitle: Text('1.0.0'),
+              ),
+              ListTile(
+                title: const Text('ソースコード'),
+                subtitle: const Text('GitHub'),
+                trailing: const Icon(Icons.open_in_new),
+                onTap: () {
+                  // TODO: Implement opening the source code URL
+                },
+              ),
+            ],
           ),
-          const Divider(),
-          _buildSectionTitle(context, 'バージョン情報'),
-          const ListTile(
-            title: Text('バージョン'),
-            subtitle: Text('1.0.0'),
-          ),
-          ListTile(
-            title: const Text('ソースコード'),
-            subtitle: const Text('GitHub'),
-            trailing: const Icon(Icons.open_in_new),
-            onTap: () {
-              // TODO: Implement opening the source code URL
-            },
-          ),
-        ],
+        ),
       ),
     );
   }
