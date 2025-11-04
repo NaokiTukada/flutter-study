@@ -41,11 +41,24 @@ class HomeScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: StaggeredGrid.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16.0,
-                crossAxisSpacing: 16.0,
-                children: widgetData.map((item) => StaggeredGridTile.fit(crossAxisCellCount: 1, child: WidgetCard(key: ValueKey(item.name), item: item))).toList(),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final crossAxisCount = (constraints.maxWidth / 200).floor().clamp(2, 6);
+                  return StaggeredGrid.count(
+                    crossAxisCount: crossAxisCount,
+                    mainAxisSpacing: 16.0,
+                    crossAxisSpacing: 16.0,
+                    children: widgetData
+                        .map((item) => StaggeredGridTile.fit(
+                              crossAxisCellCount: 1,
+                              child: WidgetCard(
+                                key: ValueKey(item.name),
+                                item: item,
+                              ),
+                            ))
+                        .toList(),
+                  );
+                },
               ),
             ),
           ),
