@@ -97,16 +97,19 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           SliverToBoxAdapter(
-                          child: StaggeredGrid.count(
-                            crossAxisCount: crossAxisCount,
-                            mainAxisSpacing: 16.0,
-                            crossAxisSpacing: 16.0,
-                            children: _filteredWidgets
-                                .map((item) => StaggeredGridTile.fit(
-                                    crossAxisCellCount: 1,
-                                    child: WidgetCard(key: ValueKey(item.name), item: item)))
-                                .toList(),
-                          ),            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: StaggeredGrid.count(
+                crossAxisCount: crossAxisCount,
+                mainAxisSpacing: 16.0,
+                crossAxisSpacing: 16.0,
+                children: _filteredWidgets
+                    .map((item) => StaggeredGridTile.fit(
+                        crossAxisCellCount: 1,
+                        child: WidgetCard(key: ValueKey(item.name), item: item)))
+                    .toList(),
+              ),
+            ),
           ),
         ],
       ),
