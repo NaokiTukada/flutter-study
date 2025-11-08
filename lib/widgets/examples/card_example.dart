@@ -9,7 +9,7 @@ class CardExample extends StatelessWidget {
       child: const SizedBox(
         width: 200,
         height: 100,
-        child: Center(child: Text('Card')),
+        child: Center(child: Text('カード')),
       ),
     );
   }

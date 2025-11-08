@@ -21,6 +21,7 @@ class StackExample extends StatelessWidget {
           width: 80,
           height: 80,
           color: Colors.blue,
+          child: const Center(child: Text('前面')),
         ),
       ],
     );

@@ -8,8 +8,8 @@ class ColumnExample extends StatelessWidget {
     return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Child 1'),
-        Text('Child 2'),
+        Text('子要素 1'),
+        Text('子要素 2'),
       ],
     );
   }

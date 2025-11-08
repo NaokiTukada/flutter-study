@@ -8,7 +8,7 @@ class TextFieldExample extends StatelessWidget {
     return const TextField(
       decoration: InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'TextField',
+        labelText: 'テキストフィールド',
       ),
     );
   }

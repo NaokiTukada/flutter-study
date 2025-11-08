@@ -15,6 +15,17 @@ import 'package:flutter_study/widgets/examples/row_example.dart';
 import 'package:flutter_study/widgets/examples/stack_example.dart';
 import 'package:flutter_study/widgets/examples/text_example.dart';
 import 'package:flutter_study/widgets/examples/text_field_example.dart';
+import 'package:flutter_study/widgets/examples/wrap_example.dart';
+import 'package:flutter_study/widgets/examples/slider_example.dart';
+import 'package:flutter_study/widgets/examples/alert_dialog_example.dart';
+import 'package:flutter_study/widgets/examples/snack_bar_example.dart';
+import 'package:flutter_study/widgets/examples/rich_text_example.dart';
+import 'package:flutter_study/widgets/examples/circle_avatar_example.dart';
+import 'package:flutter_study/widgets/examples/data_table_example.dart';
+import 'package:flutter_study/widgets/examples/checkbox_example.dart';
+import 'package:flutter_study/widgets/examples/radio_example.dart';
+import 'package:flutter_study/widgets/examples/switch_example.dart';
+import 'package:flutter_study/widgets/examples/tooltip_example.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_study/providers/favorites_provider.dart';
@@ -151,6 +162,28 @@ class DetailScreen extends StatelessWidget {
         return const TextFieldExample();
       case 'CircularProgressIndicator':
         return const CircularProgressIndicatorExample();
+      case 'Wrap':
+        return const WrapExample();
+      case 'Slider':
+        return const SliderExample();
+      case 'AlertDialog':
+        return const AlertDialogExample();
+      case 'SnackBar':
+        return const SnackBarExample();
+      case 'RichText':
+        return const RichTextExample();
+      case 'CircleAvatar':
+        return const CircleAvatarExample();
+      case 'DataTable':
+        return const DataTableExample();
+      case 'Checkbox':
+        return const CheckboxExample();
+      case 'Radio':
+        return const RadioExample();
+      case 'Switch':
+        return const SwitchExample();
+      case 'Tooltip':
+        return const TooltipExample();
       default:
         return const SizedBox();
     }

@@ -8,9 +8,9 @@ class RowExample extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Child 1'),
+        Text('子要素 1'),
         SizedBox(width: 16),
-        Text('Child 2'),
+        Text('子要素 2'),
       ],
     );
   }
