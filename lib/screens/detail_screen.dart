@@ -79,44 +79,32 @@ class DetailScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                   ),
                   const SizedBox(height: 32),
-                  Text(
-                    'Code Example',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface),
-                  ),
-                  const SizedBox(height: 16),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    padding: const EdgeInsets.all(16.0),
-                    child: HighlightView(
-                      item.codeSnippet,
-                      language: 'dart',
-                      theme: githubGistTheme,
-                      textStyle: GoogleFonts.robotoMono(fontSize: 14),
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  Text(
-                    'Live Example',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface),
-                  ),
-                  const SizedBox(height: 16),
-                  Container(
-                    width: double.infinity,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Theme.of(context).colorScheme.outline),
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Center(
-                      child: Theme(
-                        data: ThemeData(brightness: Brightness.light),
-                        child: _buildExampleWidget(item.name),
-                      ),
-                    ),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      if (constraints.maxWidth < 800) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _buildCodeExample(context),
+                            const SizedBox(height: 32),
+                            _buildLiveExample(context),
+                          ],
+                        );
+                      } else {
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: _buildCodeExample(context),
+                            ),
+                            const SizedBox(width: 32),
+                            Expanded(
+                              child: _buildLiveExample(context),
+                            ),
+                          ],
+                        );
+                      }
+                    },
                   ),
                 ],
               ),
@@ -133,6 +121,60 @@ class DetailScreen extends StatelessWidget {
           color: isFavorite ? Colors.redAccent : Colors.white,
         ),
       ),
+    );
+  }
+
+  Widget _buildCodeExample(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Code Example',
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface),
+        ),
+        const SizedBox(height: 16),
+        Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          padding: const EdgeInsets.all(16.0),
+          child: HighlightView(
+            item.codeSnippet,
+            language: 'dart',
+            theme: githubGistTheme,
+            textStyle: GoogleFonts.robotoMono(fontSize: 14),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLiveExample(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Live Example',
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface),
+        ),
+        const SizedBox(height: 16),
+        Container(
+          width: double.infinity,
+          height: 200,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Theme.of(context).colorScheme.outline),
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: Center(
+            child: Theme(
+              data: ThemeData(brightness: Brightness.light),
+              child: _buildExampleWidget(item.name),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

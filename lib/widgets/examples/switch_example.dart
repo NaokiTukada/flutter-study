@@ -8,18 +8,15 @@ class SwitchExample extends StatefulWidget {
 }
 
 class _SwitchExampleState extends State<SwitchExample> {
-  bool light = true;
+  bool _isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
     return Switch(
-      // This bool value toggles the switch.
-      value: light,
-      activeColor: Colors.red,
-      onChanged: (bool value) {
-        // This is called when the user toggles the switch.
+      value: _isSwitched,
+      onChanged: (value) {
         setState(() {
-          light = value;
+          _isSwitched = value;
         });
       },
     );
