@@ -226,23 +226,25 @@ Slider(
     icon: Icons.add_alert,
     codeSnippet: '''
 ElevatedButton(
-  onPressed: () => showDialog<String>(
-    context: context,
-    builder: (BuildContext context) => AlertDialog(
-      title: const Text('アラートダイアログのタイトル'),
-      content: const Text('アラートダイアログの説明'),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () => Navigator.pop(context, 'キャンセル'),
-          child: const Text('キャンセル'),
-        ),
-        TextButton(
-          onPressed: () => Navigator.pop(context, 'OK'),
-          child: const Text('OK'),
-        ),
-      ],
-    ),
-  ),
+  onPressed: () {
+    // showDialog<String>(
+    //   context: context,
+    //   builder: (BuildContext context) => AlertDialog(
+    //     title: const Text('アラートダイアログのタイトル'),
+    //     content: const Text('アラートダイアログの説明'),
+    //     actions: <Widget>[
+    //       TextButton(
+    //         onPressed: () => Navigator.pop(context, 'キャンセル'),
+    //         child: const Text('キャンセル'),
+    //       ),
+    //       TextButton(
+    //         onPressed: () => Navigator.pop(context, 'OK'),
+    //         child: const Text('OK'),
+    //       ),
+    //     ],
+    //   ),
+    // );
+  },
   child: const Text('ダイアログを表示'),
 )
 ''',
@@ -255,17 +257,17 @@ ElevatedButton(
     codeSnippet: '''
 ElevatedButton(
   onPressed: () {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('素晴らしいスナックバー！'),
-        action: SnackBarAction(
-          label: 'アクション',
-          onPressed: () {
-            // Code to execute.
-          },
-        ),
-      ),
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(
+    //     content: const Text('素晴らしいスナックバー！'),
+    //     action: SnackBarAction(
+    //       label: 'アクション',
+    //       onPressed: () {
+    //         // Code to execute.
+    //       },
+    //     ),
+    //   ),
+    // );
   },
   child: const Text('スナックバーを表示'),
 )
@@ -420,6 +422,119 @@ Switch(
 Tooltip(
   message: 'これはツールチップです',
   child: const Text('私にカーソルを合わせてください'),
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Expanded',
+    description: 'Row、Column、Flexの子が利用可能なスペースを埋めるように展開します。',
+    category: 'レイアウト',
+    icon: Icons.open_in_full,
+    codeSnippet: '''
+Row(
+  children: <Widget>[
+    Container(
+      color: Colors.blue,
+      height: 50,
+      width: 50,
+    ),
+    Expanded(
+      child: Container(
+        color: Colors.red,
+        height: 50,
+      ),
+    ),
+    Container(
+      color: Colors.blue,
+      height: 50,
+      width: 50,
+    ),
+  ],
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Padding',
+    description: '子ウィジェットにパディング（内側の余白）を追加します。',
+    category: 'レイアウト',
+    icon: Icons.space_bar,
+    codeSnippet: '''
+const Padding(
+  padding: EdgeInsets.all(16.0),
+  child: Text('パディングされたテキスト'),
+)
+''',
+  ),
+  WidgetItem(
+    name: 'Margin',
+    description: 'Containerのmarginプロパティを使用して、ウィジェットの外側に余白を作成します。',
+    category: 'レイアウト',
+    icon: Icons.highlight_off,
+    codeSnippet: '''
+Container(
+  margin: const EdgeInsets.all(16.0),
+  color: Colors.amber,
+  width: 48.0,
+  height: 48.0,
+)
+''',
+  ),
+  WidgetItem(
+    name: 'GestureDetector',
+    description: 'タップ、ドラッグ、スケーリングなどのジェスチャーを検出します。',
+    category: '入力',
+    icon: Icons.touch_app,
+    codeSnippet: '''
+GestureDetector(
+  onTap: () {
+    // タップ時の処理
+  },
+  child: Container(
+    width: 100,
+    height: 100,
+    color: Colors.blue,
+    child: const Center(child: Text('タップしてね')),
+  ),
+)
+''',
+  ),
+  WidgetItem(
+    name: 'GridView',
+    description: 'スクロール可能な2Dウィジェット配列。',
+    category: 'レイアウト',
+    icon: Icons.grid_on,
+    codeSnippet: '''
+GridView.count(
+  crossAxisCount: 2,
+  children: List.generate(4, (index) {
+    return Center(
+      child: Text(
+        'アイテム \u0024index',
+      ),
+    );
+  }),
+)
+''',
+  ),
+  WidgetItem(
+    name: 'AppBar',
+    description: 'マテリアルデザインのアプリバー。',
+    category: 'UIコンポーネント',
+    icon: Icons.web_asset,
+    codeSnippet: '''
+Scaffold(
+  appBar: AppBar(
+    title: const Text('AppBar'),
+    actions: <Widget>[
+      IconButton(
+        icon: const Icon(Icons.search),
+        onPressed: () {},
+      ),
+    ],
+  ),
+  body: const Center(
+    child: Text('ボディ'),
+  ),
 )
 ''',
   ),

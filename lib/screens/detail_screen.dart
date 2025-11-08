@@ -26,6 +26,12 @@ import 'package:flutter_study/widgets/examples/checkbox_example.dart';
 import 'package:flutter_study/widgets/examples/radio_example.dart';
 import 'package:flutter_study/widgets/examples/switch_example.dart';
 import 'package:flutter_study/widgets/examples/tooltip_example.dart';
+import 'package:flutter_study/widgets/examples/expanded_example.dart';
+import 'package:flutter_study/widgets/examples/padding_example.dart';
+import 'package:flutter_study/widgets/examples/margin_example.dart';
+import 'package:flutter_study/widgets/examples/gesture_detector_example.dart';
+import 'package:flutter_study/widgets/examples/grid_view_example.dart';
+import 'package:flutter_study/widgets/examples/app_bar_example.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_study/providers/favorites_provider.dart';
@@ -226,6 +232,18 @@ class DetailScreen extends StatelessWidget {
         return const SwitchExample();
       case 'Tooltip':
         return const TooltipExample();
+      case 'Expanded':
+        return const ExpandedExample();
+      case 'Padding':
+        return const PaddingExample();
+      case 'Margin':
+        return const MarginExample();
+      case 'GestureDetector':
+        return const GestureDetectorExample();
+      case 'GridView':
+        return const GridViewExample();
+      case 'AppBar':
+        return const AppBarExample();
       default:
         return const SizedBox();
     }
